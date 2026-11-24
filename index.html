@@ -1,0 +1,674 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body class="home">
+<style>
+.topbar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:48px;flex-wrap:wrap}
+.topbar .brand{font:800 1.1rem var(--f-display);color:var(--accent);text-decoration:none;margin-right:auto}
+.topbar a.t,.topbar summary{font:600 .85rem var(--f-body);color:var(--ink);text-decoration:none;cursor:pointer;list-style:none;padding:6px 8px}
+.topbar details{position:relative}
+.topbar .menu{position:absolute;right:0;top:100%;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.18);padding:8px;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:2px;width:min(480px,92vw);max-height:70vh;overflow:auto}
+.topbar .menu a{font:.85rem var(--f-body);color:var(--ink);text-decoration:none;padding:6px 8px;border-radius:4px}.topbar .menu a:hover{background:var(--accent-soft)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;padding-block:2.2rem 4rem}
+.cards h2{grid-column:1/-1;margin:0 0 4px;font:800 1.6rem var(--f-display)}
+.pc{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);padding:12px;border-radius:6px;text-decoration:none;color:var(--ink);font-weight:600}
+.pc b{font:500 .8rem var(--f-mono);color:var(--signal)}.pc:hover{background:var(--accent-soft)}
+body.home .layout{display:none}body:not(.home) .hero,body:not(.home) .cards{display:none}body.home .cards{display:grid}
+body:not(.home) main section{display:none}body:not(.home) main section.on{display:block}
+body:not(.home) .layout{padding-top:1.5rem}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:2rem}.pager a{background:var(--accent-soft);padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:600}
+</style><div class="topbar"><div class="wrap"><a class="brand" href="#home">Valley Sentinel</a><a class="t" href="#home">Home</a><a class="t" href="#why">The case</a><details><summary>All 25 points ▾</summary><div class="menu"><a href="#time">1. Time</a><a href="#scope">2. Scope</a><a href="#cost">3. Cost</a><a href="#stakeholders">4. Stakeholders</a><a href="#spheres">5. Three spheres</a><a href="#frames">6. Four frames (UFV)</a><a href="#champion">7. Champion</a><a href="#deliverables">8. Deliverables</a><a href="#lifecycle">9. Life cycle model</a><a href="#process">10. Five process groups</a><a href="#preinit">11. Pre-initiation</a><a href="#reports">12. Progress reports</a><a href="#swot">13. SWOT</a><a href="#roi">14. ROI / payback</a><a href="#quality">15. Quality management</a><a href="#charter">16. Project charter</a><a href="#quality">17. Testing &amp; cost of quality</a><a href="#hr">18. Human resources</a><a href="#hr">19. Motivation</a><a href="#resources">20. Resource planning</a><a href="#comms">21. Communicating</a><a href="#risks">22. Top 10 risks</a><a href="#procurement">23. Procurement</a><a href="#stakeholders">24. Handling stakeholders</a><a href="#closing">25. Closing</a></div></details><a class="t" href="#references">References</a></div></div>
+<title>Valley Sentinel Proposal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: river-band hero, then a sticky contents rail beside one reading column; charts get their own scroll boxes. */
+:root{
+  --bg:#f4f5f0; --surface:#ffffff; --ink:#132321; --muted:#4d5f5c; --line:#d9dccf;
+  --accent:#3f6b1e; --accent-soft:#e5eed8; --signal:#b8680f; --signal-soft:#f8ead8;
+  --hero-ink:#f2f8f7; --hero-bg:#2e4a19; --bar-pm:#8a9c99;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11140d; --surface:#191e14; --ink:#e3ecea; --muted:#9db0ad; --line:#2c3424;
+  --accent:#a3c96f; --accent-soft:#25331a; --signal:#eaa24f; --signal-soft:#3a2a16;
+  --hero-ink:#eef6f5; --hero-bg:#22361a; --bar-pm:#5d6f6c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11140d; --surface:#191e14; --ink:#e3ecea; --muted:#9db0ad; --line:#2c3424;
+  --accent:#a3c96f; --accent-soft:#25331a; --signal:#eaa24f; --signal-soft:#3a2a16;
+  --hero-ink:#eef6f5; --hero-bg:#22361a; --bar-pm:#5d6f6c; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body)}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 3rem);padding-bottom:2.5rem;position:relative;overflow:hidden}
+.hero svg.ridge{position:absolute;inset:auto 0 0 0;width:100%;height:120px;opacity:.18}
+.hero .wrap{position:relative}
+.eyebrow{font:500 .75rem/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hero h1{font:800 clamp(2.6rem,7vw,4.6rem)/1 var(--f-display);font-stretch:80%;margin:.6rem 0 .4rem;letter-spacing:-.01em}
+.hero .lede{max-width:62ch;font-size:1.1rem;opacity:.92;margin:0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;margin-top:2rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.facts div{background:var(--hero-bg);padding:.9rem 1rem}
+.facts b{display:block;font:700 1.5rem/1.1 var(--f-display);font-stretch:85%}
+.facts span{font:.78rem/1.3 var(--f-mono);opacity:.8}
+.byline{margin-top:1.4rem;font:.8rem/1.4 var(--f-mono);opacity:.8}
+
+/* layout */
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:3rem;padding-block:2.5rem 4rem}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 1rem);align-self:start;max-height:calc(100vh - 2rem);overflow:auto;font-size:.86rem}
+.toc summary{font:600 .75rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;margin-bottom:.6rem}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem;counter-reset:t}
+.toc a{display:block;color:var(--muted);text-decoration:none;padding:.18rem .5rem;border-left:2px solid var(--line)}
+.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+section{padding-block:1.6rem;border-top:1px solid var(--line);scroll-margin-top:1rem}
+section:first-child{border-top:0;padding-top:0}
+h2{font:750 clamp(1.5rem,3.2vw,2rem)/1.15 var(--f-display);font-stretch:85%;margin:0 0 .8rem;text-wrap:balance}
+h2 small{display:block;font:500 .72rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+h3{font:700 1.12rem/1.3 var(--f-display);margin:1.4rem 0 .4rem}
+p,li{max-width:70ch}
+.cite{color:var(--muted);white-space:nowrap}
+.note{background:var(--signal-soft);border-left:3px solid var(--signal);padding:.8rem 1rem;margin:1rem 0;font-size:.94rem}
+
+/* tables */
+.tbl{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:560px}
+th,td{text-align:left;vertical-align:top;padding:.6rem .75rem;border-bottom:1px solid var(--line)}
+th{font:600 .72rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font:500 .72rem var(--f-mono);padding:.1rem .45rem;border-radius:3px;white-space:nowrap}
+.hi{background:var(--signal-soft);color:var(--signal)}
+.md{background:var(--accent-soft);color:var(--accent)}
+
+/* budget bars */
+.budget{display:grid;gap:.55rem;margin:1.2rem 0}
+.brow{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr) 5.5rem;gap:.8rem;align-items:center;font-size:.88rem}
+.btrack{height:14px;background:var(--accent-soft)}
+.bfill{height:100%;background:var(--accent)}
+.bfill.res{background:var(--signal)}
+.brow .num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+
+/* gantt */
+.gantt-box{overflow-x:auto;border:1px solid var(--line);background:var(--surface);margin:1rem 0}
+.gantt{display:grid;grid-template-columns:200px repeat(13,minmax(44px,1fr));min-width:820px;font-size:.78rem}
+.gantt .h{font:500 .68rem var(--f-mono);color:var(--muted);padding:.5rem .2rem;border-bottom:1px solid var(--line);text-align:center;background:var(--bg)}
+.gantt .yr{font-weight:600;color:var(--ink)}
+.gantt .lab{padding:.45rem .7rem;border-bottom:1px solid var(--line);grid-column:1;line-height:1.25}
+.gantt .lab.grp{font:600 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--bg)}
+.gantt .track{grid-column:2 / -1;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(13,1fr);align-items:center;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/13) 100%}
+.gantt .track.grp{background-color:var(--bg)}
+.bar{height:14px;border-radius:2px;background:var(--accent);margin:0 2px}
+.bar.pm{background:var(--bar-pm)}
+.bar.ex{background:var(--signal)}
+.ms{width:12px;height:12px;background:var(--signal);transform:rotate(45deg);justify-self:center}
+.legend{display:flex;flex-wrap:wrap;gap:1rem;font:.78rem var(--f-mono);color:var(--muted);margin-top:.4rem}
+.legend i{display:inline-block;width:14px;height:10px;margin-right:.35rem;vertical-align:middle}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:.4rem;margin:1.2rem 0}
+.node{flex:1 1 140px;min-width:0;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:.7rem .8rem;font-size:.85rem}
+.node b{display:block;font:700 .95rem var(--f-display)}
+.node.gate{border-top-color:var(--signal)}
+.arrow{align-self:center;color:var(--muted);font:600 1.1rem var(--f-mono)}
+.loop{font:.8rem var(--f-mono);color:var(--muted);margin-top:-.2rem}
+.signal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:1.2rem 0;counter-reset:s}
+.step{position:relative;padding:1rem .9rem 1rem 0;border-top:3px solid var(--accent);counter-increment:s}
+.step::before{content:"Hour " attr(data-h);display:block;font:500 .7rem var(--f-mono);color:var(--signal);letter-spacing:.06em;text-transform:uppercase;margin:.5rem 0 .2rem}
+.step b{display:block;font:700 1rem var(--f-display)}
+.step p{font-size:.86rem;margin:.2rem 0 0;color:var(--muted)}
+
+/* swot */
+.swot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:1rem 0}
+.swot div{background:var(--surface);padding:1rem}
+.swot h3{margin:0 0 .4rem;font-size:1rem}
+.swot ul{margin:0;padding-left:1.1rem;font-size:.9rem}
+
+.refs{font-size:.9rem}
+.refs p{padding-left:2em;text-indent:-2em;margin:.55rem 0;max-width:none;overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding-block:1.5rem 3rem;color:var(--muted);font-size:.85rem}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:1rem}
+  .toc{position:static;max-height:none;border:1px solid var(--line);background:var(--surface);padding:.8rem}
+  .toc summary{margin:0}
+  .toc ol{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin-top:.6rem}
+  .brow{grid-template-columns:minmax(0,1fr) 5rem}
+  .brow .btrack{grid-column:1 / -1;grid-row:2}
+  .swot{grid-template-columns:minmax(0,1fr)}
+  .arrow{display:none}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+<header class="hero">
+  <svg class="ridge" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path fill="#ffffff" d="M0 120 L0 70 L90 40 L170 75 L260 18 L340 62 L420 35 L520 80 L610 28 L700 66 L790 22 L880 70 L960 45 L1050 78 L1130 38 L1200 60 L1200 120 Z"/></svg>
+  <div class="wrap">
+    <div class="eyebrow">Project Proposal · Visual Charter · Chaacha &amp; UFV</div>
+    <h1>Valley Sentinel</h1>
+    <p class="lede">The Fraser Valley One Health Biosecurity Program: a $1,000,000,000 plan to stop the next pandemic where it is most likely to start in our region, on the farm, before it ever reaches people.</p>
+    <div class="facts">
+      <div><b>$1.0B</b><span>federal investment</span></div>
+      <div><b>37 months</b><span>Dec 2026 – Dec 31, 2029</span></div>
+      <div><b>80%</b><span>of BC poultry farms are in the valley</span></div>
+      <div><b>75%+</b><span>of emerging human diseases come from animals</span></div>
+    </div>
+    <div class="byline">Prepared by: Karandeep Singh · CIS 385 · Instructor: Kevin · Submitted November 23, 2026</div>
+  </div>
+</header>
+
+<div class="wrap cards" id="home"><h2>The 25 project points</h2><a class="pc" href="#time"><b>01</b><span>Time</span></a><a class="pc" href="#scope"><b>02</b><span>Scope</span></a><a class="pc" href="#cost"><b>03</b><span>Cost</span></a><a class="pc" href="#stakeholders"><b>04</b><span>Stakeholders</span></a><a class="pc" href="#spheres"><b>05</b><span>Three spheres</span></a><a class="pc" href="#frames"><b>06</b><span>Four frames (UFV)</span></a><a class="pc" href="#champion"><b>07</b><span>Champion</span></a><a class="pc" href="#deliverables"><b>08</b><span>Deliverables</span></a><a class="pc" href="#lifecycle"><b>09</b><span>Life cycle model</span></a><a class="pc" href="#process"><b>10</b><span>Five process groups</span></a><a class="pc" href="#preinit"><b>11</b><span>Pre-initiation</span></a><a class="pc" href="#reports"><b>12</b><span>Progress reports</span></a><a class="pc" href="#swot"><b>13</b><span>SWOT</span></a><a class="pc" href="#roi"><b>14</b><span>ROI / payback</span></a><a class="pc" href="#quality"><b>15</b><span>Quality management</span></a><a class="pc" href="#charter"><b>16</b><span>Project charter</span></a><a class="pc" href="#quality"><b>17</b><span>Testing &amp; cost of quality</span></a><a class="pc" href="#hr"><b>18</b><span>Human resources</span></a><a class="pc" href="#hr"><b>19</b><span>Motivation</span></a><a class="pc" href="#resources"><b>20</b><span>Resource planning</span></a><a class="pc" href="#comms"><b>21</b><span>Communicating</span></a><a class="pc" href="#risks"><b>22</b><span>Top 10 risks</span></a><a class="pc" href="#procurement"><b>23</b><span>Procurement</span></a><a class="pc" href="#stakeholders"><b>24</b><span>Handling stakeholders</span></a><a class="pc" href="#closing"><b>25</b><span>Closing</span></a><a class="pc" href="#why"><b>★</b><span>The case: why we need this</span></a><a class="pc" href="#references"><b>APA</b><span>References</span></a></div>
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <details open id="toc-details"><summary>Contents</summary>
+    <ol>
+      <li><a href="#why">Why the valley needs this</a></li>
+      <li><a href="#charter">Project charter</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#deliverables">Deliverables</a></li>
+      <li><a href="#time">Time &amp; schedule</a></li>
+      <li><a href="#cost">Cost</a></li>
+      <li><a href="#roi">ROI &amp; payback</a></li>
+      <li><a href="#stakeholders">Stakeholders</a></li>
+      <li><a href="#champion">Champion</a></li>
+      <li><a href="#spheres">Three spheres</a></li>
+      <li><a href="#frames">Four frames at UFV</a></li>
+      <li><a href="#lifecycle">Life cycle model</a></li>
+      <li><a href="#process">Process groups</a></li>
+      <li><a href="#preinit">Pre-initiation</a></li>
+      <li><a href="#reports">Progress reports</a></li>
+      <li><a href="#swot">SWOT</a></li>
+      <li><a href="#quality">Quality &amp; testing</a></li>
+      <li><a href="#hr">People &amp; motivation</a></li>
+      <li><a href="#resources">Resource planning</a></li>
+      <li><a href="#comms">Communications</a></li>
+      <li><a href="#risks">Top 10 risks</a></li>
+      <li><a href="#procurement">Procurement</a></li>
+      <li><a href="#closing">Closing</a></li>
+      <li><a href="#references">References</a></li>
+    </ol></details>
+  </nav>
+
+  <main>
+    <section id="why">
+      <h2><small>The case</small>Why the Fraser Valley needs Valley Sentinel</h2>
+      <p>Most new human diseases do not start in people. The World Organisation for Animal Health estimates that more than 75% of emerging infectious diseases in humans are zoonotic, meaning they spread from animals <span class="cite">(World Organisation for Animal Health, 2024)</span>. The World Health Organization promotes a "One Health" approach, which treats the health of people, animals and the environment as one connected system instead of separate fields <span class="cite">(World Health Organization, 2023)</span>. If the next pandemic is likely to begin in animals, the best place to stop it is where people and animals meet most closely.</p>
+      <p>In British Columbia, that place is the Fraser Valley. The valley is home to about 80% of the province's poultry farms <span class="cite">(CBC News, 2022)</span>, and Fraser Valley East and Abbotsford together earned 37% of all farm revenue in BC in 2018 <span class="cite">(Statistics Canada, 2021)</span>. The same region has 324,005 residents <span class="cite">(Statistics Canada, 2022a)</span> and is one of the fastest-growing regional districts in the province <span class="cite">(Fraser Valley Regional District, 2024)</span>. Dense farms, a growing population and a busy border crossing make the valley a front line for animal-to-human disease.</p>
+      <p>This is not a theory. In 2004, an H7N3 avian influenza outbreak led Canadian officials to order the depopulation of all poultry south of the Fraser River, about 19 million birds <span class="cite">(CIDRAP, 2004)</span>. In 2014, an H5N2 outbreak on farms in Abbotsford and Chilliwack was the first time a Eurasian H5 bird flu virus caused an outbreak in domestic poultry in North America <span class="cite">(Canadian Food Inspection Agency, 2015)</span>. In the 2023 season, 52 BC farms, mostly in the Fraser Valley, were infected with highly pathogenic H5N1 <span class="cite">(BC Ministry of Agriculture and Food, 2023a)</span>.</p>
+      <p>The virus has already crossed into people here. In November 2024, a teenager in the Fraser Health region became the first person known to catch H5N1 bird flu inside Canada, and was in critical condition in hospital <span class="cite">(CBC News, 2024)</span>. Officials found the virus was closely related to strains circulating in BC poultry, but could not determine how the teen was infected. Just across the border, Washington State reported nine human H5 cases among poultry workers in 2024 <span class="cite">(Centers for Disease Control and Prevention, 2024)</span>, and in October 2026 H5N1 was confirmed in Washington dairy cattle for the first time <span class="cite">(Washington State Department of Agriculture, 2026)</span>. Each human infection gives the virus another chance to adapt to spread between people.</p>
+      <p>We already know what an unprepared pandemic costs. The Auditor General of Canada found that the Public Health Agency of Canada was not as well prepared for COVID-19 as it could have been <span class="cite">(Auditor General of Canada, 2021a)</span>, and that long-known problems with the national stockpile had not been fixed <span class="cite">(Auditor General of Canada, 2021b)</span>. At least 37,560 Canadians died directly from COVID-19 between January 2020 and June 2022 <span class="cite">(Statistics Canada, 2022b)</span>, more than 32,400 British Columbians had surgery postponed or never scheduled in the first wave <span class="cite">(CBC News, 2021)</span>, and federal emergency aid cost about $169 billion in 2020 alone <span class="cite">(CBC News, 2020)</span>.</p>
+      <p>Current funding is far too small for the risk. BC created a $5 million Farmed Animal Disease Program in 2023 to help farmers prepare for outbreaks <span class="cite">(BC Ministry of Agriculture and Food, 2023b)</span>, and a $2.5 million program is helping about 75 Fraser Valley poultry farms install air filtration and UV equipment <span class="cite">(BC Ministry of Agriculture and Food, 2025a)</span>. These programs work, but they reach only a fraction of farms. The province's Animal Health Centre in Abbotsford is a key diagnostic lab for avian influenza and handles more than 10,000 cases a year <span class="cite">(BC Ministry of Agriculture and Food, 2025b)</span>, but animal labs and human health labs still work largely apart.</p>
+      <div class="note"><b>Our idea in one sentence:</b> Valley Sentinel links farm biosecurity, constant environmental testing, a shared animal-and-human lab at UFV, protection for farm workers and a rapid response unit into one system, so a dangerous virus is caught in a barn or a wetland and stopped before it becomes the next pandemic.</div>
+    </section>
+
+    <section id="charter">
+      <h2><small>Item 16</small>Project charter</h2>
+      <p>A project charter officially establishes the existence of a project and authorizes the project manager to apply organizational resources to project activities <span class="cite">(Schwalbe, 2019)</span>. The charter would be approved by the sponsor and champions before planning begins.</p>
+      <div class="tbl"><table>
+        <tr><th>Field</th><th>Detail</th></tr>
+        <tr><td>Project title</td><td>Valley Sentinel: Fraser Valley One Health Biosecurity Program</td></tr>
+        <tr><td>Begin / end</td><td>December 1, 2026 (pre-initiation) to December 31, 2029 (go-live and close)</td></tr>
+        <tr><td>Budget</td><td>$1,000,000,000 CAD, including a $100M contingency reserve</td></tr>
+        <tr><td>Sponsor</td><td>Government of Canada (announced by Prime Minister Mark Carney)</td></tr>
+        <tr><td>Performing organization</td><td>Chaacha &amp; UFV, with the BC Ministry of Agriculture and Food, Fraser Health, the Canadian Food Inspection Agency (CFIA) and the BC Poultry Association</td></tr>
+        <tr><td>Project manager</td><td>Valley Sentinel Program Director (PMP-certified hire)</td></tr>
+        <tr><td>Goals</td><td>Improve biosecurity on 1,000 farms; identify H5 or another high-consequence virus in the valley within 48 hours of the first sample; establish an accredited One Health lab at UFV Chilliwack; protect and test every registered farm worker; limit a single outbreak to one farm in 90% of cases.</td></tr>
+        <tr><td>Success criteria</td><td>All six program deliverables accepted by their operating owners; "Exercise Flyway" successfully completed in Q3 2029; final cost within 5% of baseline; at least 80% of eligible farms participate.</td></tr>
+        <tr><td>Underlying assumptions</td><td>CFIA maintains sole legal responsibility for reportable animal disease; farmer organizations endorse the program; land at UFV Chilliwack is provided.</td></tr>
+        <tr><td>Constraints</td><td>Hard deadline of December 31, 2029; federal and provincial procurement regulations; biosafety regulations for high-containment laboratories; privacy of farm data.</td></tr>
+      </table></div>
+    </section>
+
+    <section id="scope">
+      <h2><small>Item 2</small>Scope</h2>
+      <p>Scope management is used to specify and control what a project does and does not include <span class="cite">(Project Management Institute [PMI], 2021)</span>. A firm scope prevents a $1B program from snowballing out of everything in the ag world.</p>
+      <h3>In scope</h3>
+      <ul>
+        <li><b>Valley One Health Lab</b> at UFV's Chilliwack campus, home to the university's agriculture and health sciences programs <span class="cite">(University of the Fraser Valley, n.d.)</span>. It tests animal, environmental, and human samples simultaneously and sequences virus genomes.</li>
+        <li><b>Farm Biosecurity Upgrade Fund</b>: air filtration, UV systems, controlled-entry rooms, wild-bird-proofing, and wash stations on 1,000 poultry, dairy, and hog farms.</li>
+        <li><b>Sentinel Surveillance Network</b>: wetland sampling for migrating wild birds, wastewater sampling at the JAMES plant in Abbotsford (which also takes Mission and Sumas, Washington), bulk-milk sampling on dairy farms, and air sampling in poultry barns <span class="cite">(City of Abbotsford, n.d.)</span>.</li>
+        <li><b>Farm Worker Health Program</b>: free protective equipment, seasonal flu vaccines, rapid testing and mobile clinics, with outreach in workers' own languages.</li>
+        <li><b>Rapid Response Unit</b>: teams and equipment to contain a farm within 24 hours, and fast compensation so farmers report early.</li>
+        <li><b>One Health Data Platform</b>: one shared, secure dashboard used by the CFIA, the provincial Animal Health Centre, Fraser Health, and the BC Centre for Disease Control.</li>
+      </ul>
+      <h3>Out of scope</h3>
+      <ul>
+        <li>Modifying CFIA's statutory powers or changing federal compensation regulations.</li>
+        <li>Production or manufacturing of any drug (a) for animals or (b) for humans.</li>
+        <li>Replacing the provincial Animal Health Centre, which is its own entity.</li>
+        <li>Operating expenses after 31 December 2029, other than for the sustainment fund.</li>
+      </ul>
+    </section>
+
+    <section id="deliverables">
+      <h2><small>Item 8</small>Deliverables</h2>
+      <p>Deliverables are the products, results or capabilities a project must produce <span class="cite">(Schwalbe, 2019)</span>.</p>
+      <div class="tbl"><table>
+        <tr><th>Deliverable</th><th>Type</th><th>Accepted by</th><th>Due</th></tr>
+        <tr><td>Project charter and business case</td><td>Management</td><td>Sponsor</td><td class="num">Mar 2027</td></tr>
+        <tr><td>Project management plan with baselines</td><td>Management</td><td>Steering committee</td><td class="num">Sep 2027</td></tr>
+        <tr><td>Sentinel Surveillance Network, 40 sampling sites live</td><td>Product</td><td>BC Ministry of Agriculture and Food</td><td class="num">Jun 2028</td></tr>
+        <tr><td>One Health Data Platform, version 1</td><td>Product</td><td>Steering committee</td><td class="num">Sep 2028</td></tr>
+        <tr><td>Rapid Response Unit trained and equipped</td><td>Product</td><td>CFIA / Ministry</td><td class="num">Mar 2029</td></tr>
+        <tr><td>Valley One Health Lab, certified and testing</td><td>Product</td><td>UFV / Public Health Agency of Canada</td><td class="num">Jun 2029</td></tr>
+        <tr><td>Farm Worker Health Program covering all regions</td><td>Product</td><td>Fraser Health</td><td class="num">Jun 2029</td></tr>
+        <tr><td>1,000 farms upgraded</td><td>Product</td><td>BC Poultry Association / BC Dairy</td><td class="num">Dec 2029</td></tr>
+        <tr><td>"Exercise Flyway" full-scale test report</td><td>Management</td><td>Steering committee</td><td class="num">Sep 2029</td></tr>
+        <tr><td>Final report, lessons learned, handover</td><td>Management</td><td>Sponsor</td><td class="num">Dec 2029</td></tr>
+      </table></div>
+    </section>
+
+    <section id="time">
+      <h2><small>Item 1</small>Time and schedule</h2>
+      <p>Time management includes identifying activities, sequencing activities, estimating activity durations, and controlling the schedule <span class="cite">(Schwalbe, 2019)</span>. The critical path is through the One Health Lab, since a high-containment lab needs to be designed, built, commissioned, and certified before it can accept dangerous samples. Farm improvements are phased so contractors are not overwhelmed, and the surveillance network is begun early as it brings immediate value.</p>
+      <div class="gantt-box" role="img" aria-label="Gantt chart of Valley Sentinel from Q4 2026 to Q4 2029">
+        <div class="gantt">
+          <div class="h" style="text-align:left;padding-left:.7rem">Activity</div>
+          <div class="h yr">Q4 26</div><div class="h">Q1 27</div><div class="h">Q2 27</div><div class="h">Q3 27</div><div class="h">Q4 27</div><div class="h">Q1 28</div><div class="h">Q2 28</div><div class="h">Q3 28</div><div class="h">Q4 28</div><div class="h">Q1 29</div><div class="h">Q2 29</div><div class="h">Q3 29</div><div class="h">Q4 29</div>
+
+          <div class="lab grp">Project management</div><div class="track grp"></div>
+          <div class="lab">Pre-initiation</div><div class="track"><div class="bar pm" style="grid-column:1/2"></div></div>
+          <div class="lab">Initiating (charter signed)</div><div class="track"><div class="bar pm" style="grid-column:2/3"></div></div>
+          <div class="lab">Planning (baselines)</div><div class="track"><div class="bar pm" style="grid-column:3/5"></div></div>
+          <div class="lab">Monitoring &amp; controlling</div><div class="track"><div class="bar pm" style="grid-column:2/14"></div></div>
+
+          <div class="lab grp">Delivery workstreams</div><div class="track grp"></div>
+          <div class="lab">Surveillance pilot (10 sites)</div><div class="track"><div class="bar" style="grid-column:4/6"></div></div>
+          <div class="lab">Surveillance full network</div><div class="track"><div class="bar" style="grid-column:6/8"></div><div class="ms" style="grid-column:8/9"></div></div>
+          <div class="lab">Data platform (spiral)</div><div class="track"><div class="bar" style="grid-column:5/12"></div></div>
+          <div class="lab">One Health Lab design</div><div class="track"><div class="bar" style="grid-column:4/6"></div></div>
+          <div class="lab">One Health Lab construction</div><div class="track"><div class="bar" style="grid-column:6/10"></div></div>
+          <div class="lab">Lab commissioning &amp; certification</div><div class="track"><div class="bar" style="grid-column:10/12;opacity:.55"></div><div class="ms" style="grid-column:12/13"></div></div>
+          <div class="lab">Farm upgrades, wave 1–3</div><div class="track"><div class="bar" style="grid-column:6/14"></div></div>
+          <div class="lab">Farm worker health program</div><div class="track"><div class="bar" style="grid-column:6/14"></div></div>
+          <div class="lab">Rapid Response Unit</div><div class="track"><div class="bar" style="grid-column:7/11"></div><div class="ms" style="grid-column:11/12"></div></div>
+
+          <div class="lab grp">Testing &amp; closing</div><div class="track grp"></div>
+          <div class="lab">Exercise Flyway</div><div class="track"><div class="bar ex" style="grid-column:12/13"></div></div>
+          <div class="lab">Closing &amp; handover</div><div class="track"><div class="bar pm" style="grid-column:13/14"></div><div class="ms" style="grid-column:13/14;justify-self:end"></div></div>
+        </div>
+      </div>
+      <div class="legend"><span><i style="background:var(--bar-pm)"></i>Management</span><span><i style="background:var(--accent)"></i>Build / deliver</span><span><i style="background:var(--accent);opacity:.55"></i>Commission / certify</span><span><i style="background:var(--signal)"></i>Test</span><span><i style="background:var(--signal);transform:rotate(45deg);width:10px"></i>Milestone</span></div>
+      <h3>Key milestones</h3>
+      <div class="tbl"><table>
+        <tr><th>Milestone</th><th class="num">Target date</th></tr>
+        <tr><td>Charter signed</td><td class="num">Mar 31, 2027</td></tr>
+        <tr><td>Baselines approved, lab design-build contract awarded</td><td class="num">Sep 30, 2027</td></tr>
+        <tr><td>Full surveillance network reporting weekly</td><td class="num">Jun 30, 2028</td></tr>
+        <tr><td>Rapid Response Unit operational</td><td class="num">Mar 31, 2029</td></tr>
+        <tr><td>One Health Lab certified</td><td class="num">Jun 30, 2029</td></tr>
+        <tr><td>Exercise Flyway passed</td><td class="num">Sep 30, 2029</td></tr>
+        <tr><td>1,000th farm upgrade complete; project closed</td><td class="num">Dec 31, 2029</td></tr>
+      </table></div>
+    </section>
+
+    <section id="cost">
+      <h2><small>Item 3</small>Cost: where every dollar goes</h2>
+      <p>Cost management includes estimating, budgeting, and controlling costs so the project can be completed within the approved budget <span class="cite">(PMI, 2021)</span>. The table below indicates how each of the lines was estimated. Ten percent is maintained as a contingency reserve.</p>
+      <div class="budget" role="img" aria-label="Budget breakdown bar chart">
+        <div class="brow"><span>Valley One Health Lab</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="num">$260M</span></div>
+        <div class="brow"><span>Farm Biosecurity Upgrade Fund</span><div class="btrack"><div class="bfill" style="width:88.5%"></div></div><span class="num">$230M</span></div>
+        <div class="brow"><span>Sentinel Surveillance Network</span><div class="btrack"><div class="bfill" style="width:42.3%"></div></div><span class="num">$110M</span></div>
+        <div class="brow"><span>Contingency reserve</span><div class="btrack"><div class="bfill res" style="width:38.5%"></div></div><span class="num">$100M</span></div>
+        <div class="brow"><span>Rapid Response Unit</span><div class="btrack"><div class="bfill" style="width:38.5%"></div></div><span class="num">$100M</span></div>
+        <div class="brow"><span>Farm Worker Health Program</span><div class="btrack"><div class="bfill" style="width:34.6%"></div></div><span class="num">$90M</span></div>
+        <div class="brow"><span>One Health Data Platform</span><div class="btrack"><div class="bfill" style="width:15.4%"></div></div><span class="num">$40M</span></div>
+        <div class="brow"><span>Program management, quality, evaluation</span><div class="btrack"><div class="bfill" style="width:15.4%"></div></div><span class="num">$40M</span></div>
+        <div class="brow"><span>Sustainment fund (post-2029)</span><div class="btrack"><div class="bfill" style="width:11.5%"></div></div><span class="num">$30M</span></div>
+      </div>
+      <div class="tbl"><table>
+        <tr><th>Line</th><th class="num">Amount</th><th>Basis of estimate</th></tr>
+        <tr><td>Valley One Health Lab</td><td class="num">$260,000,000</td><td>High-containment building, sequencers, biosafety systems, three years of scientific staff, and new UFV One Health training programs for lab technicians and veterinary technologists. High-containment labs cost far more per square metre than ordinary labs because of air handling, waste treatment and security.</td></tr>
+        <tr><td>Farm Biosecurity Upgrade Fund</td><td class="num">$230,000,000</td><td>Average $210,000 per farm for 1,000 farms, plus $20M for inspection and administration. The current provincial program helps about 75 farms with $2.5M <span class="cite">(BC Ministry of Agriculture and Food, 2025a)</span>; our grants are larger because they include full entry rooms, wild-bird-proofing and dairy upgrades, not only filtration.</td></tr>
+        <tr><td>Sentinel Surveillance Network</td><td class="num">$110,000,000</td><td>40 sampling sites, barn air sensors, bulk-milk testing, wild bird sampling teams and three years of lab testing costs. For scale, the national wastewater program received $28.1M from 2020 to 2023 <span class="cite">(Public Health Agency of Canada, 2023)</span>.</td></tr>
+        <tr><td>Contingency reserve</td><td class="num">$100,000,000</td><td>10% of total, released only by the change control board.</td></tr>
+        <tr><td>Rapid Response Unit</td><td class="num">$100,000,000</td><td>Response teams, protective gear, mobile composting and cleaning equipment, vehicles, and a $40M bridge fund that advances compensation to farmers within two weeks so nobody delays reporting.</td></tr>
+        <tr><td>Farm Worker Health Program</td><td class="num">$90,000,000</td><td>Protective equipment, vaccines, rapid tests, two mobile clinics, outreach workers and translation over three years.</td></tr>
+        <tr><td>One Health Data Platform</td><td class="num">$40,000,000</td><td>Design, development, data-sharing agreements, privacy reviews, hosting and security audits.</td></tr>
+        <tr><td>Program management</td><td class="num">$40,000,000</td><td>4% of budget for the program office, independent audits, Exercise Flyway and evaluation.</td></tr>
+        <tr><td>Sustainment fund</td><td class="num">$30,000,000</td><td>Invested to support surveillance sampling and platform hosting after 2029.</td></tr>
+        <tr><td><b>Total</b></td><td class="num"><b>$1,000,000,000</b></td><td></td></tr>
+      </table></div>
+      <p>To prepare for a pandemic, the WHO and World Bank estimate that $31.1 billion annually is needed <span class="cite">(World Health Organization &amp; World Bank, 2022)</span>; the Global Preparedness Monitoring Board said that investment in preparedness is peanuts compared to response <span class="cite">(Global Preparedness Monitoring Board, 2019)</span>. Valley Sentinel uses most of the funding it receives in a single "lump sum" to acquire durable assets and maintains a small operational reserve.</p>
+    </section>
+
+    <section id="roi">
+      <h2><small>Item 14</small>Return on investment and payback</h2>
+      <p>ROI = (total benefits − total costs) ÷ total costs <span class="cite">(Schwalbe, 2019)</span>. Due to the unpredictable nature of outbreaks, a 10-year scenario is used, with each assumption stated.</p>
+      <div class="tbl"><table>
+        <tr><th>Step</th><th class="num">Value</th><th>Source or assumption</th></tr>
+        <tr><td>Canadian emergency relief aid for COVID-19, 2020</td><td class="num">$169.2B</td><td><span class="cite">CBC News (2020)</span></td></tr>
+        <tr><td>FVRD percentage of Canada's population</td><td class="num">0.88%</td><td>324,005 ÷ 36,991,981 <span class="cite">(Statistics Canada, 2022a)</span></td></tr>
+        <tr><td>Valley's share of one pandemic year</td><td class="num">$1.48B</td><td>Calculated.</td></tr>
+        <tr><td>Cost avoided if early detection shortens or diminishes the impact of a pandemic by 25%</td><td class="num">$370M / yr</td><td>Assumption.</td></tr>
+        <tr><td>One two-year pandemic within 10 years</td><td class="num">$740M</td><td>Assumption.</td></tr>
+        <tr><td>Reduced farm losses from fewer, smaller bird flu outbreaks</td><td class="num">$50M / yr × 10</td><td>Assumption, compared to baseline.</td></tr>
+        <tr><td><b>Total 10-year benefit</b></td><td class="num"><b>$1.24B</b></td><td></td></tr>
+        <tr><td><b>ROI</b></td><td class="num"><b>24%</b></td><td>($1.24B − $1.0B) ÷ $1.0B</td></tr>
+        <tr><td><b>Payback</b></td><td class="num"><b>~2.4 pandemic-years</b></td><td>$1.0B ÷ ($370M + $50M)</td></tr>
+      </table></div>
+      <p>The farm benefit is tangible: a single outbreak in 2004 resulted in an order to depopulate approximately 19 million birds <span class="cite">(CIDRAP, 2004)</span>, and the 2023 season impacted 52 farms <span class="cite">(BC Ministry of Agriculture and Food, 2023a)</span>. Unlike a hospital that prepares for a pandemic that may never occur, Valley Sentinel gives returns every year by reducing these farm losses, even if a human pandemic does not happen.</p>
+    </section>
+
+    <section id="stakeholders">
+      <h2><small>Items 4 &amp; 24</small>Stakeholders and how we handle them</h2>
+      <p>Stakeholders are a group of people and organizations that have, or might have, an interest in or be affected by the project <span class="cite">(PMI, 2021)</span>. The most important group in this category is farmers, since the program is useless if they are not confident enough to participate and report sick animals.</p>
+      <div class="tbl"><table>
+        <tr><th>Stakeholder</th><th>Interest</th><th>Power</th><th>Strategy</th></tr>
+        <tr><td>Government of Canada (sponsor)</td><td>Value for money, results</td><td><span class="pill hi">High</span></td><td>Manage closely: quarterly reports, gate approvals</td></tr>
+        <tr><td>Chaacha &amp; UFV leadership</td><td>Reputation, new programs and research</td><td><span class="pill hi">High</span></td><td>Manage closely: steering committee</td></tr>
+        <tr><td>Canadian Food Inspection Agency</td><td>Legal lead for reportable animal diseases</td><td><span class="pill hi">High</span></td><td>Co-design response protocols; formal agreement</td></tr>
+        <tr><td>BC Ministry of Agriculture and Food (Animal Health Centre)</td><td>Diagnostic testing, farm programs</td><td><span class="pill hi">High</span></td><td>Partner: shared lab methods and data</td></tr>
+        <tr><td>Fraser Health and BCCDC</td><td>Human health, farm worker safety</td><td><span class="pill hi">High</span></td><td>Co-lead worker program and human testing</td></tr>
+        <tr><td>Poultry, dairy and hog farmers and their associations</td><td>Costs, privacy, fair compensation</td><td><span class="pill hi">High</span></td><td>Partner: farmer advisory board, simple grant process</td></tr>
+        <tr><td>Farm workers, including seasonal workers</td><td>Safety, job security, language access</td><td><span class="pill md">Low–med</span></td><td>Protect and consult: outreach in their languages, confidential testing</td></tr>
+        <tr><td>Stó:lō and other First Nations</td><td>Land, wildlife, food security, data sovereignty</td><td><span class="pill hi">High</span></td><td>Partner early; co-develop wetland sampling and protocols</td></tr>
+        <tr><td>Washington State agencies and Whatcom County</td><td>Cross-border spread</td><td><span class="pill md">Medium</span></td><td>Keep informed: data-sharing memorandum</td></tr>
+        <tr><td>Canadian Wildlife Service and conservation groups</td><td>Wild birds and wetlands</td><td><span class="pill md">Medium</span></td><td>Keep satisfied: joint sampling permits</td></tr>
+        <tr><td>Residents and consumers</td><td>Safe food, no pandemic</td><td><span class="pill md">Low</span></td><td>Keep informed: website, media</td></tr>
+      </table></div>
+      <p>The largest concern for our stakeholders is that farmers worry a positive test result means the loss of their flock and income. We ease this by involving farmers as members of the advisory board, protecting farm data unless there is a legal obligation to report, and providing compensation with prompt payments through the Rapid Response Unit. The steering committee evaluates disputes within two weeks.</p>
+    </section>
+
+    <section id="champion">
+      <h2><small>Item 7</small>Champion</h2>
+      <p>A champion is someone in a top position to endorse your project and secure resources and support <span class="cite">(Schwalbe, 2019)</span>. Valley Sentinel has two champions. The <b>executive champion is the UFV president</b>, who is in position to allocate campus land at Chilliwack, connect the health sciences and agriculture faculties, and influence government. The <b>industry champion is the chair of the BC Poultry Association</b>, because that is where the biggest bottleneck lies. A farmer respected by his peers telling other farmers to sign up is more powerful than any advertising.</p>
+    </section>
+
+    <section id="spheres">
+      <h2><small>Item 5</small>The three-sphere model of systems management</h2>
+      <p>Schwalbe (2019) recommends looking at a project through the business, organization and technology spheres.</p>
+      <div class="tbl"><table>
+        <tr><th>Sphere</th><th>Questions</th><th>Our answer</th></tr>
+        <tr><td><b>Business</b></td><td>Is it worth it? Who pays after 2029?</td><td>ROI of about 24% under cautious assumptions. Benefits come every year through fewer farm losses. A $30M sustainment fund plus lab testing fees cover operations.</td></tr>
+        <tr><td><b>Organization</b></td><td>Who owns what? How are farmers and workers affected?</td><td>UFV owns the lab; the Ministry owns the farm fund; CFIA leads outbreak response; Fraser Health runs the worker program. Farmers gain grants but must follow new biosecurity rules.</td></tr>
+        <tr><td><b>Technology</b></td><td>Will the sensors, lab and platform work together safely?</td><td>One data platform with common standards, privacy impact assessments, and security testing before go-live. Sensors are piloted on 10 sites before full rollout.</td></tr>
+      </table></div>
+    </section>
+
+    <section id="frames">
+      <h2><small>Item 6</small>Four frames of organizations: UFV</h2>
+      <p>Bolman and Deal (2017) describe four frames for understanding organizations.</p>
+      <ul>
+        <li><b>Structural frame:</b> UFV makes decisions through its Board of Governors, Senate, and faculties. Because this project involves two faculties (agriculture and health sciences), we are setting up a single "One Health" steering group with the authority to avoid cracks between faculties.</li>
+        <li><b>Human resources frame:</b> University staff want meaningful work, not more free labour. The project adds jobs, postgraduate research, and new programs, so staff view it as expansion.</li>
+        <li><b>Political frame:</b> Government agencies, farmers, and the university all want influence. Shared governance, with a seat for each sector and jobs placed fairly across Chilliwack and Abbotsford, lessens the tension.</li>
+        <li><b>Symbolic frame:</b> UFV describes itself as the university of the Fraser Valley, located on farms and on Stó:lō land. "Protecting the valley's farms and families" fits that image and gains backing.</li>
+      </ul>
+    </section>
+
+    <section id="lifecycle">
+      <h2><small>Item 9</small>Project life cycle model</h2>
+      <p>Valley Sentinel has a <b>hybrid life cycle</b>. Our lab building uses the <b>waterfall</b> (predictive) approach because we have to build and acquire biosafety certifications in an ordered sequence based on approved designs. Our surveillance network and data platform use a <b>spiral</b> process, in which each spiral begins with a set of goals, a risk assessment, and building and testing a prototype, followed by a plan for the subsequent spirals <span class="cite">(Boehm, 1988)</span>. This works for us because we will only find out how well the sensors and data views perform on real farms. Farm upgrades are released in three waves, so the lessons from the wave 1 upgrades will improve wave 2, and then wave 3. Schwalbe (2019) states that we need a life cycle that considers how well known the requirements are.</p>
+    </section>
+
+    <section id="process">
+      <h2><small>Item 10</small>The five process groups: how the project flows</h2>
+      <p>The project moves through initiating, planning, executing, monitoring and controlling, and closing <span class="cite">(PMI, 2021)</span>. The monitoring and controlling phase works alongside execution, and every gate has to have an approval.</p>
+      <div class="flow" role="img" aria-label="Flow chart of process groups">
+        <div class="node"><b>Pre-initiation</b>Sponsor confirmed, PM selected, farm union feedback received</div><span class="arrow">→</span>
+        <div class="node gate"><b>Initiating</b>Charter signed, stakeholders identified · Gate 1</div><span class="arrow">→</span>
+        <div class="node gate"><b>Planning</b>Scope, schedule, cost, risk, and quality baselines · Gate 2</div><span class="arrow">→</span>
+        <div class="node"><b>Executing</b>Build lab, upgrade farms, deploy network</div><span class="arrow">⇄</span>
+        <div class="node"><b>Monitoring &amp; controlling</b>Earned value, change control, risk reviews</div><span class="arrow">→</span>
+        <div class="node gate"><b>Closing</b>Acceptance, handover, lessons learned · Gate 3</div>
+      </div>
+      <p class="loop">↺ A variance greater than 10% against the baseline is escalated back to planning and included in the re-baseline, with approval from the change control board.</p>
+      <h3>What the finished system does: barn to response</h3>
+      <p>This second flow chart shows how Valley Sentinel operates once it is launched. Each step listed is a deliverable of the project.</p>
+      <div class="signal">
+        <div class="step" data-h="0"><b>Signal</b><p>H5 is detected by a barn air sensor, a milk sample, or a wetland swab.</p></div>
+        <div class="step" data-h="12"><b>Confirm</b><p>One Health Lab detects and sequences the virus and looks for evidence it is adapting to mammals.</p></div>
+        <div class="step" data-h="24"><b>Alert</b><p>Data platform sends information to CFIA, the Ministry, Fraser Health, and nearby farms.</p></div>
+        <div class="step" data-h="36"><b>Lock down</b><p>Farms enter high-biosecurity mode through their upgraded entry rooms.</p></div>
+        <div class="step" data-h="48"><b>Protect people</b><p>Mobile clinics test and protect exposed workers and families.</p></div>
+        <div class="step" data-h="72"><b>Contain</b><p>Farm containment is supported by CFIA through the Rapid Response Unit; farmers also get a compensation advance.</p></div>
+      </div>
+    </section>
+
+    <section id="preinit">
+      <h2><small>Item 11</small>Pre-initiation tasks</h2>
+      <p>Senior managers can do some essential prep work before the project officially kicks off <span class="cite">(Schwalbe, 2019)</span>. In December 2026 we will:</p>
+      <ul>
+        <li>Confirm funding terms and reporting requirements with the federal sponsor.</li>
+        <li>Hire the Program Director and establish the steering committee.</li>
+        <li>Meet CFIA, the Ministry, Fraser Health, farm associations and First Nations to define roles.</li>
+        <li>Learn lessons from the 2004, 2014 and 2022–2024 outbreaks, and the pandemic audits of the Auditor General.</li>
+        <li>Secure a lab location at UFV Chilliwack and initiate biosafety and zoning audits.</li>
+        <li>Divide the program into 6 workstreams, each with a workstream manager and workstream budget.</li>
+      </ul>
+    </section>
+
+    <section id="reports">
+      <h2><small>Item 12</small>Progress reports</h2>
+      <p>Progress reports show what we did in a given period versus the plan <span class="cite">(Schwalbe, 2019)</span>. We are using earned value management. If the cost performance index (CPI) or schedule performance index (SPI) is less than 1.0, the project is over budget or behind schedule.</p>
+      <div class="tbl"><table>
+        <tr><th>Report</th><th>Audience</th><th>Frequency</th><th>Contents</th></tr>
+        <tr><td>Workstream status</td><td>Program Director</td><td>Weekly</td><td>Work performed, next steps, challenges, key risks</td></tr>
+        <tr><td>Program dashboard</td><td>Steering committee</td><td>Monthly</td><td>CPI, SPI, farms enrolled and upgraded, samples tested, risks, changes</td></tr>
+        <tr><td>Sponsor report</td><td>Government of Canada</td><td>Quarterly</td><td>Spending compared to baseline, forecast, and benefits</td></tr>
+        <tr><td>Farmer bulletin for farmers</td><td>Farmers</td><td>Monthly</td><td>Grant rounds, area surveillance results, tips</td></tr>
+        <tr><td>Public update</td><td>Residents</td><td>Quarterly</td><td>Plain-language progress</td></tr>
+      </table></div>
+      <p>For example: by December 2028, the target (planned value) is $520M, earned value is $500M, and actual cost (cost to date) is $510M. CPI = 500 ÷ 510 = 0.98 and SPI = 500 ÷ 520 = 0.96. Both are marked amber, and the farm upgrade manager and team propose a recovery plan, for example, engaging a second contractor for wave 3.</p>
+    </section>
+
+    <section id="swot">
+      <h2><small>Item 13</small>SWOT analysis</h2>
+      <div class="swot">
+        <div><h3>Strengths</h3><ul><li>Secure $1B funding</li><li>UFV Chilliwack already offers both agriculture and health sciences</li><li>Effective farm groups and a provincial lab less than an hour away</li><li>Returns each year through reduced farm losses</li></ul></div>
+        <div><h3>Weaknesses</h3><ul><li>There has been no high-containment lab constructed at UFV</li><li>Depends on voluntary farmer participation</li><li>Decisions can be sluggish as multiple agencies have shared authority</li></ul></div>
+        <div><h3>Opportunities</h3><ul><li>Leverage established barn upgrade technology that most farmers in the provincial pilot would support <span class="cite">(BC Ministry of Agriculture and Food, 2026)</span></li><li>Cross-border cooperation with Washington</li><li>New UFV programs and research grants</li><li>A benchmark other farm areas in Canada can emulate</li></ul></div>
+        <div><h3>Threats</h3><ul><li>A major H5N1 outbreak during construction</li><li>Introduced into dairy cattle, as occurred in Washington <span class="cite">(Washington State Department of Agriculture, 2026)</span></li><li>Floods, like in 2021, damaging farms and sites <span class="cite">(Emergency Management BC, n.d.)</span></li><li>Construction cost inflation <span class="cite">(CTV News, 2023)</span></li></ul></div>
+      </div>
+    </section>
+
+    <section id="quality">
+      <h2><small>Items 15 &amp; 17</small>Quality management, testing and cost of quality</h2>
+      <p>The quality management system (QMS) will ensure the project meets the original need through planning, assurance, and control <span class="cite">(PMI, 2021)</span>. The standards that will apply to Valley Sentinel are the Canadian Biosafety Standard for the lab, ISO/IEC 17025 accreditation of the testing, CFIA-approved testing methods, and national biosecurity standards for poultry and dairy farms.</p>
+      <h3>Testing plan</h3>
+      <ul>
+        <li><b>Proficiency testing:</b> the lab is asked to analyze blind samples from the reference labs and must reach the same findings as the reference lab before it releases its own data.</li>
+        <li><b>Sensor pilot:</b> six months of testing at 10 farm and wetland sites; sensors must match the lab samples 95% of the time.</li>
+        <li><b>Software testing:</b> unit, security, integration, and user acceptance testing of the data platform with CFIA, Ministry, and Fraser Health staff.</li>
+        <li><b>Farm audits:</b> all upgraded farms will be checked before the final grant payment.</li>
+        <li><b>Exercise Flyway</b> (September 2029): a complete, scaled-up simulation in which a decoy H5 signal from a wetland is carried through every stage of the barn-to-response process. The project cannot close until it passes.</li>
+      </ul>
+      <h3>Cost of quality</h3>
+      <p>The cost of quality is the cost of conformance plus the cost of non-conformance. Crosby (1979) believed that the cost of doing it right the first time is lower than the cost of fixing failures.</p>
+      <div class="tbl"><table>
+        <tr><th>Category</th><th>Valley Sentinel example</th><th class="num">Planned</th></tr>
+        <tr><td>Prevention</td><td>Review of designs, farm and employee training, selecting well-proven sensors</td><td class="num">$7M</td></tr>
+        <tr><td>Appraisal</td><td>Proficiency tests, lab accreditation, farm audits, software testing</td><td class="num">$10M</td></tr>
+        <tr><td>Internal failure</td><td>Rework found while still within our control, such as faulty sensors replaced before delivery</td><td class="num">Contingency</td></tr>
+        <tr><td>External failure</td><td>An outbreak that escapes into the environment: the failure we are designed to prevent</td><td class="num">Avoid</td></tr>
+      </table></div>
+    </section>
+
+    <section id="hr">
+      <h2><small>Items 18 &amp; 19</small>Human resource management and motivation</h2>
+      <p>The core team expands from 10 people in 2027 to roughly 180 staff and contractors at the peak (not counting construction trades). The additions include:</p>
+      <ul>
+        <li>Program Director (PMP), six workstream managers, and a program office (scheduler, cost analyst, risk manager).</li>
+        <li>Lab director, virologists, laboratory technologists, bioinformaticians, and a biosafety officer.</li>
+        <li>Veterinarians and animal health technicians for surveillance and response.</li>
+        <li>Government inspectors and upgrade advisors.</li>
+        <li>Nurses and outreach workers (by language) working with farm workers.</li>
+        <li>Software developers, a data architect, and a privacy officer.</li>
+        <li>A farmer liaison and an Indigenous engagement lead.</li>
+      </ul>
+      <p>It will be difficult to hire. There was an all-time high of 95,800 health care job vacancies in Canada in late 2022 <span class="cite">(Statistics Canada, 2023)</span>, and health workers said they felt burned out from COVID-19 <span class="cite">(Canadian Institute for Health Information, 2023)</span>. To avoid recruiting from hospitals, we train new lab and animal health technicians through UFV programs paid for by the lab budget.</p>
+      <h3>How we will motivate people</h3>
+      <p>Herzberg (1968) identified that <b>hygiene factors</b> like pay, safety, and working conditions help prevent dissatisfaction, whereas <b>motivators</b> like achievement, recognition, responsibility, and growth generate genuine motivation. We address hygiene factors by ensuring fair pay, safe working environments, and appropriate protective equipment. For motivators, we acknowledge teams at each milestone, empower workstreams with real decision-making authority, fund professional certifications, and link the work to its purpose: supporting local farms and protecting local families. Schwalbe (2019) further suggests that managers should understand what each individual values, leading them to conduct regular one-on-one meetings.</p>
+    </section>
+
+    <section id="resources">
+      <h2><small>Item 20</small>Resource planning</h2>
+      <p>Resource planning determines the people, equipment, and materials required and the timing of when they are needed <span class="cite">(PMI, 2021)</span>. A RACI chart assigns each deliverable one accountable individual.</p>
+      <div class="tbl"><table>
+        <tr><th>Deliverable</th><th>Program Director</th><th>UFV</th><th>Ministry / CFIA</th><th>Fraser Health</th></tr>
+        <tr><td>One Health Lab</td><td>A</td><td>R</td><td>C</td><td>C</td></tr>
+        <tr><td>Farm Upgrade Fund</td><td>A</td><td>I</td><td>R</td><td>I</td></tr>
+        <tr><td>Surveillance Network</td><td>A</td><td>R</td><td>C</td><td>C</td></tr>
+        <tr><td>Farm Worker Health</td><td>A</td><td>C</td><td>I</td><td>R</td></tr>
+        <tr><td>Rapid Response Unit</td><td>A</td><td>I</td><td>R</td><td>C</td></tr>
+        <tr><td>Data Platform</td><td>A</td><td>R</td><td>C</td><td>C</td></tr>
+      </table></div>
+      <p class="loop">R = responsible · A = accountable · C = consulted · I = informed</p>
+      <p>The largest surge of activity is in 2028, when construction of the lab, farm wave 1, and the rollout of the surveillance system all coincide. To smooth out resource demand, farm upgrade activities are planned for the fall and winter, a quieter time between planting and harvest, while members of the surveillance team become rapid response veterinarians once the network is running.</p>
+    </section>
+
+    <section id="comms">
+      <h2><small>Item 21</small>Communicating to stakeholders</h2>
+      <p>Communications are one of the strongest factors in project success <span class="cite">(Schwalbe, 2019)</span>.</p>
+      <div class="tbl"><table>
+        <tr><th>Audience</th><th>What they need</th><th>Channel</th><th>Frequency</th><th>Owner</th></tr>
+        <tr><td>Sponsor</td><td>Spending, forecast, risks</td><td>Formal report and meeting</td><td>Quarterly</td><td>Program Director</td></tr>
+        <tr><td>Steering committee</td><td>Dashboard, decisions</td><td>Meeting</td><td>Monthly</td><td>Program Director</td></tr>
+        <tr><td>Project team</td><td>Tasks, changes</td><td>Stand-ups, project site</td><td>Daily / weekly</td><td>Workstream managers</td></tr>
+        <tr><td>Farmers</td><td>Grants, local results, how to report</td><td>Association meetings, farm visits, bulletin, text alerts</td><td>Monthly and during alerts</td><td>Farmer liaison</td></tr>
+        <tr><td>Farm workers</td><td>Free protection and testing</td><td>Mobile clinics, posters, and radio in their languages</td><td>Seasonal</td><td>Outreach lead</td></tr>
+        <tr><td>First Nations partners</td><td>Plans, data use, wetland work</td><td>Workshops, in person</td><td>Quarterly</td><td>Indigenous engagement lead</td></tr>
+        <tr><td>Public</td><td>Progress, food safety facts</td><td>Website, media</td><td>Quarterly</td><td>Communications manager</td></tr>
+      </table></div>
+    </section>
+
+    <section id="risks">
+      <h2><small>Item 22</small>Top 10 risks and how we control them</h2>
+      <p>Risk management is how uncertain events are identified, analysed, and responded to <span class="cite">(PMI, 2021)</span>. Each risk has a risk owner and the register is revisited on a monthly basis.</p>
+      <div class="tbl"><table>
+        <tr><th>#</th><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Response</th></tr>
+        <tr><td>1</td><td>Farmers do not enroll or conceal sick birds</td><td><span class="pill md">Medium</span></td><td><span class="pill hi">High</span></td><td>Reduce: industry champion, confidentiality, fast compensation advances</td></tr>
+        <tr><td>2</td><td>Lab construction or certification is delayed</td><td><span class="pill md">Medium</span></td><td><span class="pill hi">High</span></td><td>Reduce: engage an experienced design-build firm, conduct early biosafety review, perform interim testing at partner labs</td></tr>
+        <tr><td>3</td><td>H5N1 outbreak during the project</td><td><span class="pill hi">High</span></td><td><span class="pill md">Medium</span></td><td>Exploit: initiate surveillance and response early so the project can deliver immediate support</td></tr>
+        <tr><td>4</td><td>Construction and equipment costs increase</td><td><span class="pill hi">High</span></td><td><span class="pill md">Medium</span></td><td>Reduce: fixed-price contracts, 10% contingency</td></tr>
+        <tr><td>5</td><td>Biosafety incident at the lab</td><td><span class="pill md">Low</span></td><td><span class="pill hi">High</span></td><td>Avoid: use certified design, provide training, appoint a biosafety officer, conduct regular audits</td></tr>
+        <tr><td>6</td><td>Not enough qualified staff</td><td><span class="pill hi">High</span></td><td><span class="pill md">Medium</span></td><td>Mitigate: train our own through UFV, start recruiting early</td></tr>
+        <tr><td>7</td><td>Agencies are at odds over data and authority</td><td><span class="pill md">Medium</span></td><td><span class="pill md">Medium</span></td><td>Avoid: signed data-sharing agreements before Gate 2</td></tr>
+        <tr><td>8</td><td>Farm data breach or privacy complaint</td><td><span class="pill md">Medium</span></td><td><span class="pill md">Medium</span></td><td>Reduce: conduct privacy impact assessments, use encryption, enforce access controls</td></tr>
+        <tr><td>9</td><td>Flood damages farms or sampling sites</td><td><span class="pill md">Medium</span></td><td><span class="pill md">Medium</span></td><td>Reduce: select flood-aware locations, obtain insurance, establish backup sites</td></tr>
+        <tr><td>10</td><td>Change of priorities by government</td><td><span class="pill md">Low</span></td><td><span class="pill md">Medium</span></td><td>Reduce: transfer funds in 2027, publish early wins</td></tr>
+      </table></div>
+      <p><b>Controlling risks:</b> the risk manager is responsible for updating risk scores and managing the risks, and does this on a monthly basis. The risk manager also monitors trigger indicators, for example, farm enrolment falling below 60% of target in any wave, or a bid coming in 15% or more over estimate. A response is not released unless the change control board approves.</p>
+    </section>
+
+    <section id="procurement">
+      <h2><small>Item 23</small>Procurement: what we will buy</h2>
+      <p>Procurement management involves the acquisition of products and services from outside sources <span class="cite">(Schwalbe, 2019)</span>. All purchases must adhere to public tendering legislation and regulations, including the Canadian Free Trade Agreement. UFV will require additional lab space, laboratory equipment, vehicles, and software.</p>
+      <div class="tbl"><table>
+        <tr><th>What we buy</th><th>Contract type</th><th>Why</th></tr>
+        <tr><td>Lab design and construction at UFV Chilliwack</td><td>Fixed price (design-build)</td><td>Transfers cost risk to the builder once the design is finalized</td></tr>
+        <tr><td>Genome sequencers, PCR machines, biosafety cabinets, freezers</td><td>Fixed price with service contracts</td><td>Specific equipment requires upkeep</td></tr>
+        <tr><td>Barn air sensors and filtration systems</td><td>Standing offer with approved suppliers</td><td>Farmers choose from a list of approved suppliers</td></tr>
+        <tr><td>Farm construction work</td><td>Grants, with fixed-price contractor rates</td><td>Farmers contract the work at rates we agree; farmers pay and we inspect</td></tr>
+        <tr><td>Data platform development</td><td>Time and materials, not to exceed (capped) per spiral loop</td><td>Requirements are revised at each spiral loop</td></tr>
+        <tr><td>Protective equipment, vaccines, tests</td><td>Standing offers</td><td>Can be reordered quickly during an outbreak</td></tr>
+        <tr><td>Mobile clinics, response vehicles, composting units</td><td>Fixed price</td><td>Standard products</td></tr>
+      </table></div>
+    </section>
+
+    <section id="closing">
+      <h2><small>Item 25</small>Closing process</h2>
+      <p>Formal closure is the settling of the project, verifying that all work is approved, and documenting lessons learned <span class="cite">(PMI, 2021)</span>. Valley Sentinel closes from October to December 31, 2029:</p>
+      <ul>
+        <li>Get signed acceptance for all deliverables from their operating owner.</li>
+        <li>Turn over the lab to UFV, the farm fund to the Ministry, the response equipment to CFIA and the Ministry, and the worker program to Fraser Health.</li>
+        <li>Close out all contracts and grants. Pay all remaining invoices and transfer any unspent contingency into the sustainment fund.</li>
+        <li>Release project staff with recognition, and assist in transitions to permanent positions.</li>
+        <li>Conduct lessons-learned workshops and issue a final report for use in other farm regions.</li>
+        <li>Celebrate the go-live with the farmers, workers, and the community on December 31, 2029.</li>
+      </ul>
+      <div class="note">Valley Sentinel will be a success if the next deadly virus is detected in a barn air filter or a wetland sample, not a hospital, and is contained there.</div>
+    </section>
+
+    <section id="references" class="refs">
+      <h2><small>APA 7th edition</small>References</h2>
+      <p>Auditor General of Canada. (2021a). <i>Report 8—Pandemic preparedness, surveillance, and border control measures</i>. Office of the Auditor General of Canada. <a href="https://www.canada.ca/en/auditor-general/our-work/audit-reports/parl-oag-202103-03-e.html" target="_blank" rel="noopener">https://www.canada.ca/en/auditor-general/our-work/audit-reports/parl-oag-202103-03-e.html</a></p>
+      <p>Auditor General of Canada. (2021b). <i>Report 10—Securing personal protective equipment and medical devices</i>. Office of the Auditor General of Canada. <a href="https://www.canada.ca/en/auditor-general/our-work/audit-reports/parl-oag-202105-01-e.html" target="_blank" rel="noopener">https://www.canada.ca/en/auditor-general/our-work/audit-reports/parl-oag-202105-01-e.html</a></p>
+      <p>BC Ministry of Agriculture and Food. (2023a, December 14). <i>Avian influenza now detected at more than 50 farms</i> [Information bulletin]. Government of British Columbia. <a href="https://news.gov.bc.ca/releases/2023AF0062-001984" target="_blank" rel="noopener">https://news.gov.bc.ca/releases/2023AF0062-001984</a></p>
+      <p>BC Ministry of Agriculture and Food. (2023b). <i>Farmed Animal Disease Program</i> [News release]. Government of British Columbia. <a href="https://news.gov.bc.ca/releases/2023AF0021-000338" target="_blank" rel="noopener">https://news.gov.bc.ca/releases/2023AF0021-000338</a></p>
+      <p>BC Ministry of Agriculture and Food. (2025a). <i>Novel Tools and Technologies Program</i> [News release]. Government of British Columbia. <a href="https://news.gov.bc.ca/releases/2025AF0014-000772" target="_blank" rel="noopener">https://news.gov.bc.ca/releases/2025AF0014-000772</a></p>
+      <p>BC Ministry of Agriculture and Food. (2025b). <i>New plant and animal health centre</i> [News release]. Government of British Columbia. <a href="https://news.gov.bc.ca/releases/2025AF0019-000989" target="_blank" rel="noopener">https://news.gov.bc.ca/releases/2025AF0019-000989</a></p>
+      <p>BC Ministry of Agriculture and Food. (2026). <i>Novel Tools and Technologies Program, second round</i> [News release]. Government of British Columbia. <a href="https://news.gov.bc.ca/releases/2026AF0015-000656" target="_blank" rel="noopener">https://news.gov.bc.ca/releases/2026AF0015-000656</a></p>
+      <p>Boehm, B. W. (1988). A spiral model of software development and enhancement. <i>Computer, 21</i>(5), 61–72. <a href="https://doi.org/10.1109/2.59" target="_blank" rel="noopener">https://doi.org/10.1109/2.59</a></p>
+      <p>Bolman, L. G., &amp; Deal, T. E. (2017). <i>Reframing organizations: Artistry, choice, and leadership</i> (6th ed.). Jossey-Bass.</p>
+      <p>Canadian Food Inspection Agency. (2015). <i>Avian influenza in British Columbia (2014)</i>. <a href="https://inspection.canada.ca/en/animal-health/terrestrial-animals/diseases/reportable/avian-influenza/disease-incidents/avian-influenza-british-columbia-2014" target="_blank" rel="noopener">https://inspection.canada.ca/en/animal-health/terrestrial-animals/diseases/reportable/avian-influenza/disease-incidents/avian-influenza-british-columbia-2014</a></p>
+      <p>Canadian Institute for Health Information. (2023). <i>Hospital staffing and hospital harm trends throughout the pandemic</i>. <a href="https://www.cihi.ca/en/node/10880" target="_blank" rel="noopener">https://www.cihi.ca/en/node/10880</a></p>
+      <p>CBC News. (2020). <i>Federal deficit could hit $256 billion, PBO says in new report</i>. <a href="https://www.cbc.ca/news/politics/federal-deficit-pbo-1.5617221" target="_blank" rel="noopener">https://www.cbc.ca/news/politics/federal-deficit-pbo-1.5617221</a></p>
+      <p>CBC News. (2021). <i>Surgeries now complete for 90% of B</i>.C. patients who saw postponements during first wave of COVID-19: Province. <a href="https://www.cbc.ca/news/canada/british-columbia/1.5863388" target="_blank" rel="noopener">https://www.cbc.ca/news/canada/british-columbia/1.5863388</a></p>
+      <p>CBC News. (2022). <i>Avian flu detected in Fraser Valley, home to 80% of British Columbia’s poultry farms</i>. <a href="https://www.cbc.ca/news/canada/british-columbia/avian-flu-abbotsford-poultry-1.6460202" target="_blank" rel="noopener">https://www.cbc.ca/news/canada/british-columbia/avian-flu-abbotsford-poultry-1.6460202</a></p>
+      <p>CBC News. (2024, November). <i>B</i>.C. investigating 1st presumptive human case of H5N1 avian flu acquired in Canada. <a href="https://www.cbc.ca/news/1.7379630" target="_blank" rel="noopener">https://www.cbc.ca/news/1.7379630</a></p>
+      <p>Centers for Disease Control and Prevention. (2024, November 4). <i>CDC A(H5N1) bird flu response update</i>. <a href="https://www.cdc.gov/bird-flu/spotlights/h5n1-response-11012024.html" target="_blank" rel="noopener">https://www.cdc.gov/bird-flu/spotlights/h5n1-response-11012024.html</a></p>
+      <p>CIDRAP. (2004, April). <i>Canada to kill 19 million poultry to stop avian flu</i>. Center for Infectious Disease Research and Policy, University of Minnesota. <a href="https://www.cidrap.umn.edu/avian-influenza-bird-flu/canada-kill-19-million-poultry-stop-avian-flu" target="_blank" rel="noopener">https://www.cidrap.umn.edu/avian-influenza-bird-flu/canada-kill-19-million-poultry-stop-avian-flu</a></p>
+      <p>City of Abbotsford. (n.d.). <i>JAMES Wastewater Treatment Plant</i>. <a href="https://www.abbotsford.ca/city-hall/projects-go/james-wastewater-treatment-plant" target="_blank" rel="noopener">https://www.abbotsford.ca/city-hall/projects-go/james-wastewater-treatment-plant</a></p>
+      <p>Crosby, P. B. (1979). <i>Quality is free: The art of making quality certain</i>. McGraw-Hill.</p>
+      <p>CTV News. (2023). <i>New Surrey hospital will cost $1B more than planned, won’t open until 2030</i>. <a href="https://bc.ctvnews.ca/new-surrey-hospital-will-cost-1b-more-than-planned-won-t-open-until-2030-1.6557919" target="_blank" rel="noopener">https://bc.ctvnews.ca/new-surrey-hospital-will-cost-1b-more-than-planned-won-t-open-until-2030-1.6557919</a></p>
+      <p>Emergency Management BC. (n.d.). <i>Abbotsford community summary</i> [Report]. Government of British Columbia. <a href="https://www2.gov.bc.ca/assets/gov/public-safety-and-emergency-services/emergency-preparedness-response-recovery/embc/reports/abbotsford-community_summary.pdf" target="_blank" rel="noopener">https://www2.gov.bc.ca/assets/gov/public-safety-and-emergency-services/emergency-preparedness-response-recovery/embc/reports/abbotsford-community_summary.pdf</a></p>
+      <p>Fraser Valley Regional District. (2024). <i>2024 Regional Growth Strategy monitoring report</i>. <a href="https://fvrd.ca/assets/Government/Documents/Document~Library/2024%20RGS%20Monitoring%20Report.pdf" target="_blank" rel="noopener">https://fvrd.ca/assets/Government/Documents/Document~Library/2024%20RGS%20Monitoring%20Report.pdf</a></p>
+      <p>Global Preparedness Monitoring Board. (2019). <i>A world at risk: Annual report on global preparedness for health emergencies</i>. World Health Organization. <a href="https://www.gpmb.org/reports/m/item/a-world-at-risk-gpmb-2019-annual-report" target="_blank" rel="noopener">https://www.gpmb.org/reports/m/item/a-world-at-risk-gpmb-2019-annual-report</a></p>
+      <p>Herzberg, F. (1968). One more time: How do you motivate employees? <i>Harvard Business Review, 46</i>(1), 53–62.</p>
+      <p>Project Management Institute. (2021). <i>A guide to the project management body of knowledge (PMBOK guide)</i> (7th ed.).</p>
+      <p>Public Health Agency of Canada. (2023, May). <i>Government of Canada continues to monitor and invest in COVID-19 wastewater monitoring</i> [News release]. <a href="https://www.canada.ca/en/public-health/news/2023/05/government-of-canada-continues-to-monitor-and-invest-in-covid-19-wastewater-monitoring.html" target="_blank" rel="noopener">https://www.canada.ca/en/public-health/news/2023/05/government-of-canada-continues-to-monitor-and-invest-in-covid-19-wastewater-monitoring.html</a></p>
+      <p>Schwalbe, K. (2019). <i>Information technology project management</i> (9th ed.). Cengage Learning.</p>
+      <p>Statistics Canada. (2021). <i>Taking stock of the farm damage caused by flooding in British Columbia</i>. <a href="https://www.statcan.gc.ca/o1/en/plus/205-taking-stock-farm-damage-caused-flooding-british-columbia" target="_blank" rel="noopener">https://www.statcan.gc.ca/o1/en/plus/205-taking-stock-farm-damage-caused-flooding-british-columbia</a></p>
+      <p>Statistics Canada. (2022a). <i>Census profile, 2021 census of population</i>. <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm" target="_blank" rel="noopener">https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm</a></p>
+      <p>Statistics Canada. (2022b). <i>Provisional death counts and excess mortality, January 2020 to June 2022</i>. <a href="https://www.statcan.gc.ca/o1/en/plus/1745-provisional-death-counts-and-excess-mortality-january-2020-june-2022" target="_blank" rel="noopener">https://www.statcan.gc.ca/o1/en/plus/1745-provisional-death-counts-and-excess-mortality-january-2020-june-2022</a></p>
+      <p>Statistics Canada. (2023). <i>Insights on Canadian society</i> (Catalogue no. 75-006-X). <a href="https://www150.statcan.gc.ca/n1/pub/75-006-x/2023001/article/00007-eng.htm" target="_blank" rel="noopener">https://www150.statcan.gc.ca/n1/pub/75-006-x/2023001/article/00007-eng.htm</a></p>
+      <p>University of the Fraser Valley. (n.d.). <i>UFV campuses</i>. <a href="https://www.ufv.ca/future-students/ufv-campuses/" target="_blank" rel="noopener">https://www.ufv.ca/future-students/ufv-campuses/</a></p>
+      <p>Washington State Department of Agriculture. (2026, October). <i>HPAI confirmed in two dairy herds in Yakima County</i> [Bulletin]. <a href="https://content.govdelivery.com/accounts/WAAGR/bulletins/42e41b6" target="_blank" rel="noopener">https://content.govdelivery.com/accounts/WAAGR/bulletins/42e41b6</a></p>
+      <p>World Health Organization. (2023). <i>One Health</i> [Fact sheet]. <a href="https://www.who.int/news-room/fact-sheets/detail/one-health" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/one-health</a></p>
+      <p>World Health Organization &amp; World Bank. (2022). <i>Analysis of pandemic preparedness and response (PPR) architecture, financing needs, gaps and mechanisms</i>. <a href="https://www.g20.utoronto.ca/2022/G20-FHTF-Financing-Gaps-for-PPR-WHOWB-Feb-10_Final.pdf" target="_blank" rel="noopener">https://www.g20.utoronto.ca/2022/G20-FHTF-Financing-Gaps-for-PPR-WHOWB-Feb-10_Final.pdf</a></p>
+      <p>World Organisation for Animal Health. (2024). <i>One Health: Tackling zoonotics and pandemics</i>. <a href="https://woah.org/app/uploads/2024/06/oh-tackling-zoonotics-pandemics.pdf" target="_blank" rel="noopener">https://woah.org/app/uploads/2024/06/oh-tackling-zoonotics-pandemics.pdf</a></p>
+    </section>
+  </main>
+</div>
+<footer><div class="wrap">Valley Sentinel is a course proposal based on a fictional $1B funding scenario with a fictional go-live date of December 31, 2029. Statistics come from the sources listed; budget lines and ROI inputs marked as assumptions are the author's estimates.</div></footer>
+<script>
+try{ if(window.matchMedia('(max-width:860px)').matches){ document.getElementById('toc-details').open=false } }catch(e){}
+</script>
+
+<style>
+.hero{background:radial-gradient(900px 400px at 85% -10%,rgba(163,201,111,.35),transparent 60%),linear-gradient(135deg,#1c3410,#2e4a19 55%,#3f6b1e)}
+.hero h1{background:linear-gradient(90deg,#fff,#cfe8a4);-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise .8s both}
+.hero .lede,.hero .facts,.hero .byline,.hero .eyebrow{animation:rise .9s .15s both}
+.facts div{backdrop-filter:blur(6px);transition:transform .25s}.facts div:hover{transform:translateY(-3px)}
+.topbar{background:color-mix(in srgb,var(--surface) 80%,transparent);backdrop-filter:blur(12px) saturate(1.4)}
+.topbar a.t,.topbar summary{border-radius:999px;transition:background .2s}.topbar a.t:hover,.topbar summary:hover{background:var(--accent-soft)}
+.topbar .menu{animation:rise .2s both;border-radius:12px}
+#prog{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--signal));z-index:100;transition:width .1s}
+.cards h2{background:linear-gradient(90deg,var(--accent),var(--signal));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:2rem}
+.pc{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);border-left:1px solid var(--line);padding:18px 14px;box-shadow:0 1px 2px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s,border-color .25s;animation:rise .5s both}
+.pc::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(var(--accent),var(--signal));transition:width .25s}
+.pc:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 14px 28px rgba(63,107,30,.22);border-color:var(--accent)}.pc:hover::before{width:100%;opacity:.12}
+.pc b{font-size:1.15rem;background:var(--signal-soft);padding:4px 8px;border-radius:8px}
+.pc:nth-child(2){animation-delay:.03s}.pc:nth-child(3){animation-delay:.06s}.pc:nth-child(4){animation-delay:.09s}.pc:nth-child(5){animation-delay:.12s}.pc:nth-child(6){animation-delay:.15s}.pc:nth-child(7){animation-delay:.18s}.pc:nth-child(8){animation-delay:.21s}.pc:nth-child(n+9){animation-delay:.25s}
+body:not(.home) main section.on{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.8rem;box-shadow:0 10px 30px rgba(0,0,0,.07);animation:rise .45s both}
+body:not(.home) main section.on h2{background:linear-gradient(90deg,var(--accent),var(--signal));-webkit-background-clip:text;background-clip:text;color:transparent}
+body:not(.home) main section.on h2 small{-webkit-text-fill-color:var(--signal)}
+.pager a{border-radius:999px;padding:10px 20px;background:linear-gradient(90deg,var(--accent),#5f8f2e);color:#fff;transition:transform .2s,box-shadow .2s}.pager a:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(63,107,30,.3)}
+#tt{margin-left:4px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:34px;height:34px;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div id="prog"></div>
+<script>
+(function(){var p=document.getElementById('prog'),b=document.querySelector('.topbar .wrap'),t=document.createElement('button');t.id='tt';t.textContent='◐';t.title='Toggle dark mode';t.onclick=function(){var d=document.documentElement,dark=d.getAttribute('data-theme')==='dark'||(!d.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);d.setAttribute('data-theme',dark?'light':'dark')};b.appendChild(t);
+addEventListener('scroll',function(){var h=document.documentElement;p.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+'%'})})();
+</script>
+<script>
+(function(){var ids=[].map.call(document.querySelectorAll('main section'),function(x){return x.id});
+function r(){var h=(location.hash||'#home').slice(1);if(ids.indexOf(h)<0)h='home';
+document.body.classList.toggle('home',h==='home');
+ids.forEach(function(i){document.getElementById(i).classList.toggle('on',i===h)});
+document.querySelectorAll('.topbar details').forEach(function(d){d.open=false});
+var t=document.getElementById('toc-details');if(t)t.open=window.innerWidth>860;
+window.scrollTo(0,0);
+document.querySelectorAll('.pager').forEach(function(p){p.remove()});
+if(h!=='home'){var k=ids.indexOf(h),el=document.getElementById(h),p=document.createElement('div');p.className='pager';
+p.innerHTML=(k>0?'<a href="#'+ids[k-1]+'">← Previous</a>':'<span></span>')+(k<ids.length-1?'<a href="#'+ids[k+1]+'">Next →</a>':'<span></span>');el.appendChild(p)}}
+window.addEventListener('hashchange',r);r()})();
+</script></body></html>
